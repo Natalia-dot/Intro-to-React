@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^2.7.1"
+  },
+  "name": "n1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint":"eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
