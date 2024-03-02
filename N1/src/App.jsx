@@ -1,3 +1,5 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
 // 1.1 const Pet = () => {
 // return React.createElement("div", {}, [
 //     React.createElement("h1", {}, "Maki"),
@@ -39,7 +41,7 @@ const App = () => {
   ]);
 };
 const mainContainer = document.getElementById("root");
-const root = ReactDOM.createRoot(mainContainer);
+const root = createRoot(mainContainer);
 root.render(React.createElement(App, {}, null));
 //siempre tiene 3 argumentos createElement, pero pueden obviarse
 // React.createElement(App) funciona igual
