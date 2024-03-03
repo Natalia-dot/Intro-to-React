@@ -6,6 +6,7 @@ const Pet = (props) => {
     React.createElement("h1", {}, props.name),
     React.createElement("h2", {}, props.species),
     React.createElement("h2", {}, props.race),
+    React.createElement("h3", {}, props.location),
   ]);
 };
 
