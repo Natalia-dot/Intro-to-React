@@ -41,13 +41,15 @@ import { SearchParams } from "./SearchParams";
 
 const App = () => {
   return (
-    // <div>
-    //   <h1>Adopt-a-me!</h1>
-    //   <Pet name="Maki" species="Dog" race="Yorkshire" />
-    //   <Pet name="Pitu" species="Cat" race="Orange Cat" />
-    //   <Pet name="Pato" species="Reptile" race="Gecko" />
-    // </div>
-    <SearchParams />
+    <>
+      <div>
+        <h1>Adopt-a-me!</h1>
+        {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
+        {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
+        {/* //   <Pet name="Pato" species="Reptile" race="Gecko" />  */}
+      </div>
+      <SearchParams />
+    </>
   );
 };
 
