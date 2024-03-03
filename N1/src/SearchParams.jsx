@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Pet from "./Pet";
 import { useBreedList } from "./useBreeds";
 import { Results } from "./Results";
 let ANIMALS = ["bird", "dog", "cat", "reptile"];
