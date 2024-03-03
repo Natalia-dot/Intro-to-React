@@ -11,6 +11,7 @@ export const Results = ({ pets }) => {
           species={pet.animal}
           race={pet.breed}
           location={`${pet.city},${pet.state}`}
+          images={pet.images}
         />
       ))}
       ;
