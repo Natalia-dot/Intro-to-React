@@ -9,8 +9,7 @@ export const SearchParams = () => {
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
-  const [breedList] = useBreedList(animal);
-  console.log(breedList);
+  const [breedList, status] = useBreedList(animal);
   useEffect(() => {
     fetchPets();
   }, []);
