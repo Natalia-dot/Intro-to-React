@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { SearchParams } from "./SearchParams";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { Details } from "./Details";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // 1.1 const Pet = () => {
 // return React.createElement("div", {}, [
 //     React.createElement("h1", {}, "Maki"),
@@ -40,21 +41,34 @@ import { Details } from "./Details";
 //siempre tiene 3 argumentos createElement, pero pueden obviarse
 // React.createElement(App) funciona igual
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
+//es como el router en la version mas actualizadacon el objeto.
+//tambien como context provider
+
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
-        <header>
-          <Link to="/">Adopt-a-me!</Link>
-          {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
-          {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
-          {/* //   <Pet name="Pato" species="Reptile" race="Gecko" />  */}
-        </header>
-        <Routes>
-          <Route path="/" element={<SearchParams />} />
-          <Route path="/details/:id" element={<Details />} />
-        </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <header>
+            <Link to="/">Adopt-a-me!</Link>
+            {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
+            {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
+            {/* //   <Pet name="Pato" species="Reptile" race="Gecko" />  */}
+          </header>
+          <Routes>
+            <Route path="/" element={<SearchParams />} />
+            <Route path="/details/:id" element={<Details />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </div>
   );
 };
