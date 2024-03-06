@@ -3,6 +3,7 @@ import { SearchParams } from "./SearchParams";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { ErrorBoundaryDetails } from "./Details";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AdoptedPetContext } from "./AdoptedPetContext";
 // 1.1 const Pet = () => {
 // return React.createElement("div", {}, [
 //     React.createElement("h1", {}, "Maki"),
@@ -53,22 +54,25 @@ const queryClient = new QueryClient({
 //tambien como context provider
 
 const App = () => {
+  const adoptedPet = null;
   return (
     <div>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <header>
-            <Link to="/">Adopt-a-me!</Link>
-            {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
-            {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
-            {/* //   <Pet name="Pato" species="Reptile" race="Gecko" />  */}
-          </header>
-          <Routes>
-            <Route path="/" element={<SearchParams />} />
-            <Route path="/details/:id" element={<ErrorBoundaryDetails />} />
-          </Routes>
-        </BrowserRouter>
-      </QueryClientProvider>
+      <AdoptedPetContext.Provider value={adoptedPet}>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <header>
+              <Link to="/">Adopt-a-me!</Link>
+              {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
+              {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
+              {/* //   <Pet name="Pato" species="Reptile" race="Gecko" />  */}
+            </header>
+            <Routes>
+              <Route path="/" element={<SearchParams />} />
+              <Route path="/details/:id" element={<ErrorBoundaryDetails />} />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </AdoptedPetContext.Provider>
     </div>
   );
 };
