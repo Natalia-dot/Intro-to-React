@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { ErrorBoundaryDetails } from "./Details";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AdoptedPetContext } from "./AdoptedPetContext";
+import { useState } from "react";
 // 1.1 const Pet = () => {
 // return React.createElement("div", {}, [
 //     React.createElement("h1", {}, "Maki"),
@@ -54,7 +55,7 @@ const queryClient = new QueryClient({
 //tambien como context provider
 
 const App = () => {
-  const adoptedPet = null;
+  const adoptedPet = useState(null);
   return (
     <div>
       <AdoptedPetContext.Provider value={adoptedPet}>
