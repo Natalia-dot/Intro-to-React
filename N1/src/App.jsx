@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { SearchParams } from "./SearchParams";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { Details } from "./Details";
+import { ErrorBoundaryDetails } from "./Details";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // 1.1 const Pet = () => {
 // return React.createElement("div", {}, [
@@ -65,7 +65,7 @@ const App = () => {
           </header>
           <Routes>
             <Route path="/" element={<SearchParams />} />
-            <Route path="/details/:id" element={<Details />} />
+            <Route path="/details/:id" element={<ErrorBoundaryDetails />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
