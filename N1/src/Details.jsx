@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import { petFetch } from "./fetchPet";
 import { Carousel } from "./Carousel";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { useState } from "react";
+import { Modal } from "./Modal";
 
 const Details = () => {
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const results = useQuery(["detailsPage", id], petFetch);
   if (results.isLoading) {
@@ -26,8 +29,18 @@ const Details = () => {
       <h4>
         A {individualPet.breed} {individualPet.animal}
       </h4>
-      <button>Adopt {individualPet.name}</button>
+      <button onClick={() => setShowModal(true)}>
+        Adopt {individualPet.name}
+      </button>
       <p>{individualPet.description}</p>
+      {showModal ? (
+        <Modal>
+          <h2>Do you want to adopt {individualPet.name}?</h2>
+          <p>This is an important thing!</p>
+          <button onClick={() => console.log("yes")}>Yes</button>
+          <button onClick={() => setShowModal(false)}>No</button>
+        </Modal>
+      ) : null}
     </div>
   );
 };
