@@ -23,7 +23,12 @@ const Details = () => {
 
   const individualPet = results?.data?.pets[0];
   return (
-    <div className="details">
+    <div
+      className="p-0 m-0"
+      style={{
+        background: "url(http://pets-images.dev-apis.com/pets/wallpaperC.jpg)",
+      }}
+    >
       <Carousel images={individualPet.images} />
       <h2>{individualPet.name}</h2>
       <h3>

@@ -61,7 +61,7 @@ const App = () => {
       <AdoptedPetContext.Provider value={adoptedPet}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <header>
+            <header className="mb-10 w-full bg-gradient-to-b from-yellow-400 via-orange-500 to-red-500 p-7 text-center">
               <Link to="/">Adopt-a-me!</Link>
               {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
               {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
