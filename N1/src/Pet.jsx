@@ -7,11 +7,11 @@ const Pet = ({ name, id, location, species, race, images }) => {
     hero = images[0];
   }
   return (
-    <Link to={`/details/${id}`} className="pet">
+    <Link to={`/details/${id}`} className="relative block">
       <div className="image-container">
         <img src={hero} alt={name} />
       </div>
-      <div className="info">
+      <div className="absolute bottom-0 left-0 bg-gradient-to-tr from-white ">
         <h1>{name}</h1>
         <h2>
           {species} - {race} - {location}
