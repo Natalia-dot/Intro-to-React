@@ -57,12 +57,19 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null);
   return (
-    <div>
+    <div
+      className="p-0 m-0"
+      style={{
+        background: "url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg)",
+      }}
+    >
       <AdoptedPetContext.Provider value={adoptedPet}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <header className="mb-10 w-full bg-gradient-to-b from-yellow-400 via-orange-500 to-red-500 p-7 text-center">
-              <Link to="/">Adopt-a-me!</Link>
+              <Link to="/" className="text-6xl text-white hover:text-gray-200">
+                Adopt-a-me!
+              </Link>
               {/* //   <Pet name="Maki" species="Dog" race="Yorkshire" /> */}
               {/* //   <Pet name="Pitu" species="Cat" race="Orange Cat" /> */}
               {/* //   <Pet name="Pato" species="Reptile" race="Gecko" />  */}
