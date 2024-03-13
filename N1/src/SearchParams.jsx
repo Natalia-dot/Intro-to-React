@@ -36,7 +36,7 @@ export const SearchParams = () => {
         }}
       >
         {adoptedPet ? (
-          <div className="pet image-container">
+          <div id="adoptedPet">
             <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
           </div>
         ) : null}

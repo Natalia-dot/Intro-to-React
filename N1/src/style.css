@@ -13,3 +13,49 @@
     @apply disabled:opacity-50;
   }
 }
+
+@layer utilities {
+  #modal {
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal:empty {
+    display: none;
+  }
+
+  #modal > div {
+    background-color: white;
+    max-width: 500px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 30px;
+    background: #faeff0;
+  }
+
+  #modal > div button {
+    display: inline-block;
+    width: 20%;
+    margin-right: 15px;
+    border-radius: 25px;
+    border: 1px solid black;
+  }
+}
+
+@layer utilities {
+  #adoptedPet {
+    @apply h-20;
+
+    img {
+      @apply h-full rounded-full;
+    }
+  }
+}

@@ -23,39 +23,45 @@ const Details = () => {
 
   const individualPet = results?.data?.pets[0];
   return (
-    <div
-      className="p-0 m-0"
-      style={{
-        background: "url(http://pets-images.dev-apis.com/pets/wallpaperC.jpg)",
-      }}
-    >
-      <Carousel images={individualPet.images} />
-      <h2>{individualPet.name}</h2>
-      <h3>
-        {individualPet.city}, {individualPet.state}
-      </h3>
-      <h4>
-        A {individualPet.breed} {individualPet.animal}
-      </h4>
-      <button onClick={() => setShowModal(true)}>
-        Adopt {individualPet.name}
-      </button>
-      <p>{individualPet.description}</p>
-      {showModal ? (
-        <Modal>
-          <h2>Do you want to adopt {individualPet.name}?</h2>
-          <p>This is an important thing!</p>
-          <button
-            onClick={() => {
-              setAdoptedPet(individualPet);
-              navigate("/");
-            }}
-          >
-            Yes
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      <div className="p-0 m-0 flex-col bg-red-500 w-5/6 h-5/6 rounded-2xl">
+        <Carousel images={individualPet.images} />
+        <div className="mb-10 mx-5">
+          <h2 className="my-2 font-bold">{individualPet.name}</h2>
+          <h3 className="  text-xs -mt-2">
+            {individualPet.city}, {individualPet.state}
+          </h3>
+          <h4 className="mt-4">
+            A {individualPet.breed} {individualPet.animal}
+          </h4>
+          <button onClick={() => setShowModal(true)}>
+            Adopt {individualPet.name}
           </button>
-          <button onClick={() => setShowModal(false)}>No</button>
-        </Modal>
-      ) : null}
+          <p>{individualPet.description}</p>
+          {showModal ? (
+            <Modal>
+              <h2 className="m-4 font-semibold">
+                Do you want to adopt {individualPet.name}?
+              </h2>
+              <p>This is an important thing!</p>
+              <button
+                onClick={() => {
+                  setAdoptedPet(individualPet);
+                  navigate("/");
+                }}
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowModal(false)}
+                className=" bg-red-400 bg-opacity-50 my-4"
+              >
+                No
+              </button>
+            </Modal>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 };
