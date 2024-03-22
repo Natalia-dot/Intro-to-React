@@ -22,7 +22,7 @@
     "sourceType": "module",
     "ecmaFeatures": {
     "jsx": true
-    }
+    } 
   },
   "env": {
     "es6": true,
@@ -34,7 +34,7 @@
       "version": "detect"
     },
     "import/parsers":{
-      "@typescript-eslint/parser": [".ts",".tsx"]
+      "@typescript-eslint/parser": ["src/**/*.tsx","src/**/*.ts"]
 
     },
     "import/resolver": {
