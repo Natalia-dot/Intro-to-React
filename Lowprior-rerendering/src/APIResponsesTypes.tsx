@@ -18,3 +18,8 @@ export interface PetAPIResponse {
   hasNext: boolean;
   pets: Pet[];
 }
+
+export interface BreedResponse {
+  animal: Animal;
+  breeds: string[];
+}
