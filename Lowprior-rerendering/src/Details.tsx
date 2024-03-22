@@ -16,7 +16,7 @@ const Details = () => {
   }
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const results = useQuery<PetAPIResponse>(["details", id], fetchPet);
+  const results = useQuery(["details", id], fetchPet);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
@@ -30,9 +30,8 @@ const Details = () => {
 
   const pet = results?.data?.pets[0];
   if (!pet) {
-    throw new Error("NOPET!");
+    throw new Error("No PET!!");
   }
-
   return (
     <div className="details">
       <Carousel images={pet.images} />
