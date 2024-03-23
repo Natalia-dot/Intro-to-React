@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Results from "./Results";
-import AdoptedPetContext from "./AdoptedPetContext";
 import useBreedList from "./useBreedList";
 import fetchSearch from "./fetchSearch";
+import { useSelector } from "react-redux";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
@@ -12,7 +12,12 @@ const SearchParams = () => {
     animal: "",
     breed: "",
   });
-  const [adoptedPet] = useContext(AdoptedPetContext);
+
+  //the selector selects the piece of information we want to retrieve that has been stored oreviously
+  //thanks to the DISPATCHER. This also states which data haas to change before updating and re-rendering
+  //the components, acting much like a context. If we just did (state) => state, that would set
+  //the "dependencies" as state, and anytime any of the data from reducers changed, would cause a rerender.
+  const adoptedPet = useSelector((state) => state.adoptedPet.value)
   const [animal, setAnimal] = useState("");
   const [breeds] = useBreedList(animal);
 
