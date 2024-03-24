@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Results from "./Results";
+import { useSelector, useDispatch } from "react-redux";
+import { all } from "./SearchParamsSlice";
 import useBreedList from "./useBreedList";
 import fetchSearch from "./fetchSearch";
-import { useSelector } from "react-redux";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
-const SearchParams = () => {
-  const [requestParams, setRequestParams] = useState({
-    location: "",
-    animal: "",
-    breed: "",
-  });
 
+const SearchParams = () => {
+const requestParams = useSelector((state) => state.searchParams.value)
   //the selector selects the piece of information we want to retrieve that has been stored oreviously
   //thanks to the DISPATCHER. This also states which data haas to change before updating and re-rendering
   //the components, acting much like a context. If we just did (state) => state, that would set
@@ -23,6 +20,8 @@ const SearchParams = () => {
 
   const results = useQuery(["search", requestParams], fetchSearch);
   const pets = results?.data?.pets ?? [];
+
+  const dispatch = useDispatch();
 
   return (
     <div className="search-params">
@@ -35,7 +34,7 @@ const SearchParams = () => {
             breed: formData.get("breed") ?? "",
             location: formData.get("location") ?? "",
           };
-          setRequestParams(obj);
+          dispatch(all(obj));
         }}
       >
         {adoptedPet ? (
