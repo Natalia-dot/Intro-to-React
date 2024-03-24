@@ -1,23 +1,22 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Modal from "./Modal";
 import ErrorBoundary from "./ErrorBoundary";
-import fetchPet from "./fetchPet";
 import Carousel from "./Carousel";
 import { useDispatch } from "react-redux";
 import { adopt } from "./AdoptedPetSlice";
+import { useGetPetQuery } from "./petApiService";
 
 const Details = () => {
   const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const results = useQuery(["details", id], fetchPet);
+  const { isLoading, data: pet } = useGetPetQuery(id); 
 
   //useDispatch is the hook we use to dispatch all the reducers that we hace created in the store
   const dispatch = useDispatch()
 
-  if (results.isLoading) {
+  if (isLoading) {
     return (
       <div className="loading-pane">
         <h2 className="loader">🌀</h2>
@@ -25,7 +24,7 @@ const Details = () => {
     );
   }
 
-  const pet = results.data.pets[0];
+  pet ?? {}
 
   return (
     <div className="details">
